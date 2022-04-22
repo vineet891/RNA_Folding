@@ -1,2 +1,3 @@
-# RNA_Folding
-DAA Assignment 2
+# Implementation of the RNA secondary structure prediction algorithm
+Assignment 2 - Partial Fulfillment of CS F364 Design and Analysis of Algorithms
+
