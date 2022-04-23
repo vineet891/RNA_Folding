@@ -3,27 +3,12 @@
 #include <string>
 #include <vector>
 #include <algorithm>
+
 using namespace std;
- 
-void print_matrix(vector<vector<int>> &OPT, int k, int i, int j)
-{   
-    cout << "*********************" << endl;
-    cout << "Matrix when k = " << k << " and i = " << i << " and j = " << j << endl;
-    int n = OPT.size() - 1;
-    for (int i = n; i >= 0; i--)
-    {
-        for (int j = 0; j <= n; j++)
-        {
-            cout << OPT[i][j] << " ";
-        }
-        cout << endl;
-    }
- 
-    cout << "*********************" << endl;
-}
- 
-bool correct_pair(string &s, int i, int j)
-{
+
+
+
+bool checkPair(string &s, int i, int j){
     if (s[i] == 'A' && s[j] == 'U')
         return true;
     if (s[i] == 'U' && s[j] == 'A')
@@ -35,53 +20,66 @@ bool correct_pair(string &s, int i, int j)
     return false;
 } 
  
+void findPairs(string &s, vector<vector<int>>&OPT, int x, int y, int n, vector<pair<int,int>> &base_pairs){
+	if(x > n || y < 1){
+		return;
+	}
+	if(OPT[x][y] == OPT[x][y-1]){
+		findPairs(s,OPT,x,y-1,n, base_pairs);
+	}
+	else{
+		for(int t = x; t<y-4;t++){
+            if(1+ OPT[x][t-1] +OPT[t+1][y-1] == OPT[x][y]){
+                if(checkPair(s,t,y)){
+                    base_pairs.push_back({t,y});
+                    findPairs(s,OPT,x,t-1,n,base_pairs);
+                    findPairs(s,OPT,t+1,y-1,n,base_pairs);
+                    break;
+                }
+            }
+		}
+	}
+
+
+}
  
-int main(int argc, char* argv[])
-{
+int main(int argc, char* argv[]){
 
     string s;
     ifstream f;
     f.open(argv[1]);
-    if (!f)
-    {
+    if (!f){
         cerr << "File Not Found:" << argv[0] << endl;
         return 0;
     }
+    vector<pair<int,int>>base_pairs;
 
     f >> s;
-    //               123456789
-    // cout<<"Enter RNA Sequence: "<<endl;
-    // string s;
-    // cin>>s;
-    // // string s = "ACAUGAUGGCCAUGU";
-    cout<<"Input RNA Sequence: "<<s<<endl;
-    int n = s.length();
+    cout<<"\nInput RNA Sequence: "<<s<<endl;
+    s.insert(0,1,'$');
+	int n = s.size();
     vector<vector<int>> OPT(n + 1, vector<int>(n + 1, 0));
+
  
-    // print_matrix(OPT);
- 
-    for (int k = 5; k < n; k++)
-    {
- 
-        for (int i = 1; i <= n - k; i++)
-        {
+    for (int k = 5; k < n; k++) {
+        for (int i = 1; i <= n - k; i++){
             int j = i + k;
- 
-            int pairs = 0;
-            for (int t = 1; t <= j - 5; t++)
-            {
-                if(correct_pair(s,j-1, t-1))
-                {
+            int pairs = INT_MIN;
+            for (int t = i; t <= j - 5; t++){
+                if(checkPair(s,j, t)) {
                     pairs = max(1 + OPT[i][t - 1] + OPT[t + 1][j - 1], pairs);
-                    // std::cout << "othershit = " << othershit << " at t = " << t << std::endl;
                 }
-                
             }
             OPT[i][j] = max(OPT[i][j - 1], pairs);
-            // print_matrix(OPT, k, i, j);
         }
     }
  
     cout << "Number of Base Pairs: "<< OPT[1][n] << endl;
+    cout<< "The Base Pairs are "<<endl;
+    findPairs(s, OPT, 1, n, n, base_pairs);
+	for(auto i:base_pairs){
+		cout<<s[i.first]<<"("<<i.first<<")"<<" <---> "<<s[i.second]<<"("<<i.second<<")"<<endl;
+
+	}
     return 0;
 }
