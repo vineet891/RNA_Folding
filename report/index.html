@@ -11,7 +11,7 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/6ymc.JPEG" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -43,7 +43,7 @@
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
+        <img src="assets/img/6ymc.JPEG" alt="">
         <span>RNA Folding</span>
       </a>
 
@@ -207,7 +207,7 @@
               </div><!-- End Tab 2 Content -->
 
               <div class="tab-pane fade show" id="tab3">
-                
+                <img src="assets/img/image.png" class="img-fluid" alt="">                
               </div><!-- End Tab 3 Content -->
 
             </div>
@@ -236,48 +236,31 @@
                 <div class="col-md-6 icon-box" data-aos="fade-up">
                   <i class="ri-line-chart-line"></i>
                   <div>
-                    <h4>Corporis voluptates sit</h4>
-                    <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-                  <i class="ri-stack-line"></i>
-                  <div>
-                    <h4>Ullamco laboris nisi</h4>
-                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-                  <i class="ri-brush-4-line"></i>
-                  <div>
-                    <h4>Labore consequatur</h4>
-                    <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                  </div>
-                </div>
-
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-                  <i class="ri-magic-line"></i>
-                  <div>
-                    <h4>Beatae veritatis</h4>
-                    <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
+                    <p>The problem is solved with Dynamic Programming using memoization, and involves 2D matrix OPT as mentioned before.
+                    </p>
                   </div>
                 </div>
 
                 <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
                   <i class="ri-command-line"></i>
                   <div>
-                    <h4>Molestiae dolor</h4>
-                    <p>Et fuga et deserunt et enim. Dolorem architecto ratione tensa raptor marte</p>
+                    <p>The recurrence relation for this problem involves requiring 2 indices to compute OPT(i,j). Hence, the number of subproblems are of the order of n^2.
+                    </p>
                   </div>
                 </div>
 
-                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-                  <i class="ri-radar-line"></i>
+                
+                <div class="col-md-6 icon-box" data-aos="fade-up">
+                  <i class="ri-command-line"></i>
                   <div>
-                    <h4>Explicabo consectetur</h4>
-                    <p>Est autem dicta beatae suscipit. Sint veritatis et sit quasi ab aut inventore</p>
+                    <p>The subproblems are calculated using 2 nested loops. Each subproblem involves computing max{1 + OPT(i,t-1) + OPT(t+1,j-1)} for all t satisfying the rules mentioned above. This is done using another nested loop.</p>
+                  </div>
+                </div>
+                
+                <div class="col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
+                  <i class="ri-line-chart-line"></i>
+                  <div>
+                    <p>the overall time complexity of the RNA Secondary Structure Computing Algorithm is O(n^3).</p>
                   </div>
                 </div>
 
@@ -334,25 +317,22 @@
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="profile mt-auto">                  
-                  <img src="assets/img/6YMC.jpeg" class="testimonial-img" alt="">
-                  <h3>6YMC</h3>
-                  <h4>UCUCUGGUUAGGAAACUAACUAGGGA</h4>
+                  <img src="assets/img/7ENI.jfif" class="testimonial-img" alt="">
+                  <h3>7ENI</h3>
+                  <h4>GGUCUGCUAUUUCUAUUUA<br>CGUUUUAGUACUCUGGA<br>AACAGAAUCUACUAAAACAAGGC<br>AAAAUGCCGUGUUUC</h4>
                 </div>
                 <p>
-                  Title = 26-mer stem-loop RNA<br>
-                  Number of Base Pairs = 9<br>
+                  Title = CRYSTAL STRUCTURE OF CAS AND ANTI-CAS PROTEIN COMPLEX<br>
+                  Number of Base Pairs = 25<br>
                   The Base Pairs are:<br>
                   <ul>
-                    <li>U(1) <---> A(26)</li>
-                    <li>C(2) <---> G(24)</li>
-                    <li>C(4) <---> G(23)</li>
-                    <li>U(5) <---> A(22)</li>
-                    <li>G(6) <---> C(20)</li>
-                    <li>U(8) <---> A(19)</li>
-                    <li>U(9) <---> A(18)</li>
-                    <li>A(10) <---> U(17)</li>
-                    <li>G(11) <---> C(16)</li>
-                  </ul>       
+                    <li>G(1) <---> C(74)</li>
+                    <li>A(60) <---> U(73)</li>
+                    <li>G(2) <---> C(59)</li>
+                    <li>U(3) <---> A(56)</li>
+                    <li>U(5) <---> A(55)</li>
+                    <li>G(6) <---> C(54)</li>....
+                    </ul>
                 </p>
               </div>
             </div>
@@ -360,25 +340,23 @@
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="profile mt-auto">                  
-                  <img src="assets/img/6YMC.jpeg" class="testimonial-img" alt="">
-                  <h3>6YMC</h3>
-                  <h4>UCUCUGGUUAGGAAACUAACUAGGGA</h4>
+                  <img src="assets/img/7M3V.jfif" class="testimonial-img" alt="">
+                  <h3>7M3V</h3>
+                  <h4>UGCUCCUAGUACGAGAGGACCGGAGUG</h4>
                 </div>
                 <p>
-                  Title = 26-mer stem-loop RNA<br>
-                  Number of Base Pairs = 9<br>
+                  Title = RNA DUPLEX CONTAINING C-AU-C BASE PAIR<br>
+                  Number of Base Pairs = 7<br>
                   The Base Pairs are:<br>
                   <ul>
-                    <li>U(1) <---> A(26)</li>
-                    <li>C(2) <---> G(24)</li>
-                    <li>C(4) <---> G(23)</li>
-                    <li>U(5) <---> A(22)</li>
-                    <li>G(6) <---> C(20)</li>
-                    <li>U(8) <---> A(19)</li>
-                    <li>U(9) <---> A(18)</li>
-                    <li>A(10) <---> U(17)</li>
-                    <li>G(11) <---> C(16)</li>
-                  </ul>       
+                    <li>C(3) <---> G(25)</li>
+                    <li>U(4) <---> A(24)</li>
+                    <li>C(5) <---> G(23)</li>
+                    <li>C(6) <---> G(22)</li>
+                    <li>G(9) <---> C(20)</li>
+                    <li>U(10) <---> A(19)</li>
+                    <li>C(12) <---> G(17)</li>
+                    </ul>     
                 </p>
               </div>
             </div>
@@ -386,25 +364,39 @@
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="profile mt-auto">                  
-                  <img src="assets/img/6YMC.jpeg" class="testimonial-img" alt="">
-                  <h3>6YMC</h3>
-                  <h4>UCUCUGGUUAGGAAACUAACUAGGGA</h4>
+                  <img src="assets/img/7ECM.jfif" class="testimonial-img" alt="">
+                  <h3>7ECM</h3>
+                  <h4>GGGCCCGGACCC</h4>
                 </div>
                 <p>
-                  Title = 26-mer stem-loop RNA<br>
-                  Number of Base Pairs = 9<br>
+                  Title = RNA Sequence: GGGCCCGGACCC<br>
+                  Number of Base Pairs = 3<br>
                   The Base Pairs are:<br>
                   <ul>
-                    <li>U(1) <---> A(26)</li>
-                    <li>C(2) <---> G(24)</li>
-                    <li>C(4) <---> G(23)</li>
-                    <li>U(5) <---> A(22)</li>
-                    <li>G(6) <---> C(20)</li>
-                    <li>U(8) <---> A(19)</li>
-                    <li>U(9) <---> A(18)</li>
-                    <li>A(10) <---> U(17)</li>
-                    <li>G(11) <---> C(16)</li>
-                  </ul>       
+                    <li>G(1) <---> C(12)</li>
+                    <li>G(2) <---> C(11)</li>
+                    <li>G(3) <---> C(10)</li>
+                    </ul>   
+                </p>
+              </div>
+            </div>
+
+            <div class="swiper-slide">
+              <div class="testimonial-item">
+                <div class="profile mt-auto">                  
+                  <img src="assets/img/7EDU.jfif" class="testimonial-img" alt="">
+                  <h3>7EDU</h3>
+                  <h4>GGACUCGACUCC</h4>
+                </div>
+                <p>
+                  Title = RNA DUPLEX CONTAINING C-AU-C BASE PAIR<br>
+                  Number of Base Pairs = 3<br>
+                  The Base Pairs are:<br>
+                  <ul>
+                    <li>G(1) <---> C(12)</li>
+                    <li>G(2) <---> C(11)</li>
+                    <li>A(3) <---> U(10)</li>
+                    </ul> 
                 </p>
               </div>
             </div>
@@ -500,7 +492,7 @@
               </div>
               <div class="member-info">
                 <h4>Ishaan Khushu</h4>
-                <span>2019A7PS1000H</span>
+                <span>2019A7PS0107H</span>
                 <!-- <p>Velit aut quia fugit et et. Dolorum ea voluptate vel tempore tenetur ipsa quae aut. Ipsum exercitationem iure minima enim corporis et voluptate.</p> -->
               </div>
             </div>
