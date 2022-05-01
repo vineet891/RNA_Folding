@@ -10,12 +10,40 @@
 
 using namespace std;
 
+class RNAFoldings {
+    public:
+    vector<vector<int>> dp(string s);
+    bool checkPair(string &s, int i, int j);
+    void findPairs(string &s, vector<vector<int>>&OPT, int x, int y, int n, vector<pair<int,int>> &basePairs);
+};
+
+vector<vector<int>> RNAFoldings::dp(string s) {
+    int n = s.size();
+    vector<vector<int>> OPT(n + 1, vector<int>(n + 1, 0));
+ 
+    for (int k = 5; k < n; k++) {
+        for (int i = 1; i <= n - k; i++){
+            int j = i + k;
+            int pairs = INT_MIN;
+            for (int t = i; t <= j - 5; t++){
+                if(this->checkPair(s,j, t)) {
+                    pairs = max(1 + OPT[i][t - 1] + OPT[t + 1][j - 1], pairs);
+                }
+            }
+            OPT[i][j] = max(OPT[i][j - 1], pairs);
+        }
+    }
+
+    return OPT;
+ 
+}
+
 /// Function to check if two characters from a sequence
 /// string form a base pair.
 /// @param s pointer to a string
 /// @param i index of character
 /// @param j index of character
-bool checkPair(string &s, int i, int j){
+bool RNAFoldings::checkPair(string &s, int i, int j){
     if (s[i] == 'A' && s[j] == 'U')
         return true;
     if (s[i] == 'U' && s[j] == 'A')
@@ -32,8 +60,7 @@ bool checkPair(string &s, int i, int j){
 /// @param s Sequence string.
 /// @param OPT 2D DP matrix.
 /// @param basePairs Vector which stores the pair of bases.
-
-void findPairs(string &s, vector<vector<int>>&OPT, int x, int y, int n, vector<pair<int,int>> &basePairs){
+void RNAFoldings::findPairs(string &s, vector<vector<int>>&OPT, int x, int y, int n, vector<pair<int,int>> &basePairs){
 	if(x > n || y < 1){
 		return;
 	}
@@ -43,7 +70,7 @@ void findPairs(string &s, vector<vector<int>>&OPT, int x, int y, int n, vector<p
 	else{
 		for(int t = x; t<y-4;t++){
             if(1+ OPT[x][t-1] +OPT[t+1][y-1] == OPT[x][y]){
-                if(checkPair(s,t,y)){
+                if(this->checkPair(s,t,y)){
                     basePairs.push_back({t,y});
                     findPairs(s,OPT,x,t-1,n,basePairs);
                     findPairs(s,OPT,t+1,y-1,n,basePairs);
@@ -73,26 +100,15 @@ int main(int argc, char* argv[]){
     f >> s;
     cout<<"\nInput RNA Sequence: "<<s<<endl;
     s.insert(0,1,'$');
-	int n = s.size();
-    vector<vector<int>> OPT(n + 1, vector<int>(n + 1, 0));
 
- 
-    for (int k = 5; k < n; k++) {
-        for (int i = 1; i <= n - k; i++){
-            int j = i + k;
-            int pairs = INT_MIN;
-            for (int t = i; t <= j - 5; t++){
-                if(checkPair(s,j, t)) {
-                    pairs = max(1 + OPT[i][t - 1] + OPT[t + 1][j - 1], pairs);
-                }
-            }
-            OPT[i][j] = max(OPT[i][j - 1], pairs);
-        }
-    }
+    RNAFoldings rna;
+
+    int n = s.size();
+    vector<vector<int>> OPT = rna.dp(s);
  
     cout << "Number of Base Pairs: "<< OPT[1][n] << endl;
     cout<< "The Base Pairs are "<<endl;
-    findPairs(s, OPT, 1, n, n, basePairs);
+    rna.findPairs(s, OPT, 1, n, n, basePairs);
 	for(auto i:basePairs){
 		cout<<s[i.first]<<"("<<i.first<<")"<<" <---> "<<s[i.second]<<"("<<i.second<<")"<<endl;
 
